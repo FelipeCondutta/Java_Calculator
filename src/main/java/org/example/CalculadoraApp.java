@@ -45,5 +45,6 @@ public class CalculadoraApp
             default:
                 throw new IllegalArgumentException("Operação inválida. Use +, -, *, ou /.");
         };
+        return respostaCalculo;
     }
 }
