@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class CalculadoraApp
@@ -9,17 +10,29 @@ public class CalculadoraApp
         double valorUm;
         double valorDois;
         String operacao;
+        boolean continuar;
 
-        System.out.println("Digite o primeiro valor: ");
-        valorUm = scanner.nextDouble();
+        do {
+            System.out.println("Digite o primeiro valor: ");
+            valorUm = scanner.nextDouble();
 
-        System.out.println("Digite a operação: (+, -, /, *)");
-        operacao = scanner.next();
+            System.out.println("Digite a operação: (+, -, /, *)");
+            operacao = scanner.next();
 
-        System.out.println("Digite o segundo valor: ");
-        valorDois = scanner.nextDouble();
+            System.out.println("Digite o segundo valor: ");
+            valorDois = scanner.nextDouble();
 
-        System.out.println("Resultado: " + realizarCalculo(valorUm, valorDois, operacao));
+            System.out.println("Resultado: " + realizarCalculo(valorUm, valorDois, operacao));
+
+            continuar = verificarNovaOperacao();
+        }while (continuar);
+
+    }
+    public static boolean verificarNovaOperacao() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Deseja realizar outra operação? (S/N)");
+        return !sc.nextLine().toUpperCase(Locale.ROOT).equals("N");
     }
 
     public static Double realizarCalculo(double valorUm, double valorDois, String operacao) {
